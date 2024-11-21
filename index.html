@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webline</title>
+    <link id="theme-link" rel="stylesheet" href="style.css">
+    <!-- iOS Fullscreen meta tags -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Android Fullscreen meta tag -->
+<meta name="theme-color" content="#000000"> <!-- Adjust to your theme color -->
+</head>
+<body>
+    
+
+    <div class="icon-tray">
+        <!-- First icon triggers the modal -->
+        <div class="icon" onclick="openFeature()"><img src="img1.png" alt="F1"></div>
+        <div class="icon" onclick="openFullScreenOverlay()"><img src="img2.png" alt="soon"></div>
+        <div class="icon"><img src="icon3.png" alt="soon"></div>
+        <div class="icon"><img src="icon4.png" alt="soon"></div>
+    </div>
+    
+  <!-- Modal structure -->
+<div id="featureBox" class="modal">
+    <div class="modal-content">
+        <div class="content-wrapper">
+            <div class="image-list">
+                <div class="item">
+                    <img src="the1.jpeg" alt="Image 1" onclick="setTheme('theme1.css')">
+                    <p>Text for Image 1</p>
+                </div>
+                <div class="item">
+                    <img src="the2.jpeg" alt="Image 2" onclick="setTheme('theme2.css')">
+                    <p>Text for Image 2</p>
+                </div>
+                <div class="item">
+                    <img src="the3.jpeg" alt="Image 3" onclick="setTheme('theme3.css')">
+                    <p>Text for Image 3</p>
+                </div>
+                <div class="item">
+                    <img src="the4.jpeg" alt="Image 3" onclick="setTheme('theme4.css')">
+                    <p>Text for Image 3</p>
+                </div>
+                <div class="item">
+                    <img src="6.jpeg" alt="Image 2" onclick="setTheme('style.css')">
+                    <p>Text for Image 2</p>
+                </div>
+                <!-- Add more items as needed -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Fullscreen Overlay -->
+ 
+<div id="fullScreenOverlay" class="fullscreen-overlay">
+    <div class="center-box" contenteditable="true" id="journalText" placeholder="Start writing your journal..."> 
+        
+    </div>
+        <!-- Icons fixed at top inside the center box -->
+        <div class="icon-container">
+            <img src="close.png" alt="Close" class="close-icon" onclick="closeFullScreenOverlay()">
+            <img src="undo.png" alt="Undo" class="action-icon" id="undoButton" onclick="undoAction()">
+            <img src="redo.png" alt="Redo" class="action-icon" id="redoButton" onclick="redoAction()">
+            <img src="upload.png" alt="Upload" class="action-icon" id="uploadButton" onclick="UploadAction()">
+        </div>
+    <div class="icon-note">
+        <!-- First icon triggers the modal -->
+        <div class="notepad" onclick="togglenote()"><img src="img2.png" alt="Brush"></div>
+        <div class="notepad"><img src="shape.png" alt="soon"></div>
+        <div class="notepad"><img src="bucket.png" alt="soon"></div>
+        <div class="notepad"><img src="eraser.png" alt="soon"></div>
+    </div>
+    
+    <!-- Notes display overlay, positioned behind the icon-note container -->
+    <div id="notesDisplayOverlay" class="fullscreen-overlay" style="display: none;">
+        <div id="displayedNotesContainer" class="displayed-notes"></div>
+        <div id="journalNotes" class="journal-notes"></div>
+    </div>
+</div>
+
+      
+    <div class="grid-container">
+        <button class="grid-item" data-info="Heyy lady<br><br>I am here for telling you,<br>that you are fucking Special as always i have said earlier">Bloom</button>
+        <button class="grid-item" data-info="Note for Button 2: Other info.">Glaze</button>
+        <button class="grid-item" data-info="I've done countless mistakes.. Unintentionally,<br> 
+        but every one of them was forgiven.. Sweetyy,<br>
+        whenever I apologize everytime u may think-<br>
+        You were always the wrong guy.... um alright<br>
+        But I legit need you if I'm wrong I try to be right<br>
+        Many problems come to distance you from me<br>
+        Noo but i won't give up even if u try to escape<br>
+        At the end.. I just wanna hear it   ....Till you're-<br><br>
+        MAHINN YOU FUCKING STAY CLOSE TO MEE..!!!!">Rust</button>
+        <button class="grid-item" data-info="Note for Button 4: Specifics for Button 4.">Pristine</button>
+        <button class="grid-item" data-info="Oh Dearr Moonyy<br><br>Paragraphs were meant to store timeline,<br>
+        Poems were meant to rewind you, yourself,<br>
+        Crafts exist to matter the presence, of me,<br>
+        Do i matter to you other than just a friend..<br>
+        You've got hundreds of joy, I've got nothing<br>
+        Let me win, atleast for once if it wasn't at once<br>
+        I love you.. Give me this, your precious lovee<br><br>Can I be worthy ya?">Love</button>
+        <button class="grid-item" data-info="Note for Button 6: Instructions for Button 6.">Ethereal</button>
+        <button class="grid-item" data-info="Note for Button 7: Button 7-related notes.">Firepath</button>
+        <button class="grid-item" data-info="Note for Button 8: Info for Button 8.">Lantern</button>
+        <button class="grid-item" data-info="Note for Button 9: Final note for Button 9.">Skyy</button>
+        <audio id="background-music" src="Mine.mp3" preload="auto"></audio>
+    </div>
+    </div>
+    <div class="tooltip" id="tooltip"></div>
+
+     <div class="sliding-box" id="slidingBox"></div>
+     <div class="left-sliding-box" id="leftSlidingBox">
+        <button id="googleSignInBtn">Sign In with Google</button>
+        <input type="text" id="user" placeholder="Type your username" />
+        <button id="submitUser">Okay!</button>
+        <input type="text" id="diary" placeholder="Anything special today...?">
+        <button id="submitDiary">Publish!</button>
+
+        <div id="diaryNotes" class="diary-notes"></div>
+        <button id="signOutBtn">Sign Out</button>
+        <script src="script-2.js"></script>
+        <script src="texting.js" type="module"></script>
+     </div>
+
+    <!-- Sliding box modal -->
+    <div class="slide-box" id="slideBox">
+        <div class="box-content" id="boxContent"></div>
+        
+    </div>
+
+    <div class="dynamic-island">
+        <div class="swipebox">
+            <input type="text" id="username" placeholder="Enter your username" />
+            <button id="submitUsername">Submit</button>
+            
+            <input type="text" id="userGuess" placeholder="Type your guess here...">
+            <button id="submitGuess">Submit</button>
+             <div id="resultMessage"></div>
+      </div>
+      
+ 
+
+    <script src="script.js"></script> <!-- Link to external JS file -->
+    <script src="script2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script3.js"></script>
+    <script src="note.js"></script>
+    <script src="uploadnote.js" type="module"></script>
+    <script src="scripticon.js"></script>
+</body>
+</html>

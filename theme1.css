@@ -1,0 +1,1051 @@
+body {
+    background-image: url('6.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0; /* Removes default margin */
+    font-family: Arial, sans-serif; /* Sets a default font */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    height: 100vh; /* Full height of the viewport */
+}
+
+.grid-container {
+    display: grid; /* Use CSS grid layout */
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    grid-template-rows: repeat(3, 1fr); /* 3 equal rows */
+    width: 100vw; /* Full width */
+    height: 100vh; /* Full height */
+}
+
+.grid-item {
+    border: none; /* No border */
+    background-color: #5a4134;
+    color: rgb(216, 165, 123); /* Text color */
+    font-size: 24px; /* Reduced font size */
+    cursor: pointer; /* Pointer cursor on hover */
+    display: flex; /* Center text in button */
+    justify-content: center; /* Center text horizontally */
+    align-items: center; /* Center text vertically */
+    transition: background-color 0.3s; /* Transition for hover effect */
+    margin: 10px; /* Adds space around buttons */
+    padding: 10px; /* Adds padding inside buttons */
+    border-radius: 40px;
+    width: 80%; /* Set a fixed width */
+    height: 80%; /* Set a fixed height */
+    max-width: 40%; /* Optional: maximum width */
+    max-height: 100px; /* Optional: maximum height */
+    margin-top: 20%;
+    margin-left: 25%;
+    font-weight: bold;
+    font-style: italic;
+
+
+    /* Prevent text selection */
+    user-select: none;  /* Makes button text unselectable */
+
+
+    /* Remove blue highlight effect on mobile */
+    -webkit-tap-highlight-color: transparent;  /* For Safari and Chrome on mobile */
+
+    /* Remove focus outline */
+    outline: none;
+}
+
+.grid-item:active {
+    outline: none; /* Optionally remove outline on click */
+    
+}
+
+.grid-item:hover {
+    background-color: #27150f; /* Darker color on hover */
+}
+
+.tooltip {
+    position: absolute;
+    width: 400px; /* Width of the tooltip */
+    height: 400px; /* Height of the tooltip */
+    background-color: #36201091;
+    color: rgb(189, 148, 120); /* Text color */
+    border-radius: 20px; /* Curvy edges */
+    display: none; /* Hidden by default */
+    align-items: center; /* Center content */
+    justify-content: center; /* Center content */
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.7s ease-in-out; /* Smooth transition */
+    transform: scale(0); /* Start scaled down */
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+    padding: 20px; /* Add padding to prevent text from touching edges */
+    text-align: center; /* Center the text */
+    word-wrap: break-word; /* Break long words */
+    line-height: 1.5; /* Adjust line height to space out text evenly */
+    overflow: hidden; /* Prevent overflow */
+    z-index: 100; /* Ensure tooltip stays above everything */
+}
+
+
+/* Blur and gradient effect */
+.blur-active {
+    position: relative; /* Needed for overlaying blur */
+}
+
+.blur-active::before {
+    content: '';
+    position: fixed; /* Cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: backdrop-filter 0.7s ease-in-out; /* Smooth transition for blur */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(10px); /* Apply the blur */
+    z-index: 99; /* Below the tooltip */
+    pointer-events: none; /* Allow interaction with the tooltip */
+}
+
+/* Blur and gradient effect */
+.sideblur {
+    position: relative; /* Needed for overlaying blur */
+}
+
+.slideblur::before {
+    content: '';
+    position: fixed; /* Cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: backdrop-filter 0.7s ease-in-out; /* Smooth transition for blur */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(10px); /* Apply the blur */
+    z-index: 99; /* Below the tooltip */
+    pointer-events: none; /* Allow interaction with the tooltip */
+}
+
+
+
+@media (min-width: 769px) {
+    /* Blur and gradient effect */
+.blur-active {
+    position: relative; /* Needed for overlaying blur */
+}
+
+.blur-active::before {
+    content: '';
+    position: fixed; /* Cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: backdrop-filter 0.7s ease-in-out; /* Smooth transition for blur */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(20px); /* Apply the blur */
+    z-index: 99; /* Below the tooltip */
+    pointer-events: none; /* Allow interaction with the tooltip */
+}
+
+/* Blur and gradient effect */
+.sideblur {
+    position: relative; /* Needed for overlaying blur */
+}
+
+.slideblur::before {
+    content: '';
+    position: fixed; /* Cover the whole screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: backdrop-filter 0.7s ease-in-out; /* Smooth transition for blur */
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(20px); /* Apply the blur */
+    z-index: 99; /* Below the tooltip */
+    pointer-events: none; /* Allow interaction with the tooltip */
+}
+}
+
+/* Media query for smaller screens (mobile devices) */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(3, 1fr); /* Maintain 3 columns */
+        grid-template-rows: repeat(3, 1fr); /* Maintain 3 rows */
+        width: 100vw; /* Full width of viewport */
+        height: 100vh; /* Full height of viewport */
+    }
+
+    .grid-item {
+        margin: 5px; /* Small margin to keep space between buttons */
+        padding: 0; /* Remove extra padding */
+        font-size: 19px; /* Adjust font size slightly */
+        border-radius: 35px; /* Rounded corners */
+        margin-left: 15%;
+        margin-top: 60%;
+        max-width: 70%;
+        font-weight: bold;
+        font-style: italic;
+        background-color: #5a4134;
+    }
+
+    .tooltip {
+        width: 280px; /* Adjust the width for phones */
+        height: 280px; /* Adjust the height for phones */
+        font-size: 14px; /* Make text smaller for phones */
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smoother, hardware-accelerated transition */
+        background-color: #3f261460;
+        color: #c29977;
+    }
+
+}
+
+/* Use the ::before pseudo-element to add text */
+.sliding-box::before {
+    content: "Serenity of Affection\A\AGardens of green that you have made,\ANeither from the desire, nor from the love,\AHad made my life blossoming for once,\AWas a wonderful experience, to think of it,\A It was in your hands, still is in your hands, Just a caress heart of the garden wanted, Revive my blossoming days again, would you?\A\AHaaaye yaaahaa...... ya ya ya\AWaise waise pyaar se padhna yaar\AMat kar denaa vaar sidhe bola hu yaar\ANot the desi kalakaar na do hamko maar\A Aaram se padhna yaarr moodd bithake\ASunn lena phireeee phireeee.. \ANo offencee veeere veeeree.. \AJust muskuraiye dheereee dheereee.. \A Aankhe lage jaise heeree heeree\ATeri ye pagalpantiyaaan.. Dil lee gyiii\AKade aess chidhte kade aouss chidhteee\AYaar tera sukoon mein na margaaa\AKabhi milne ke baad toh tumm yaad kroogee\AMaze nhi aane par toh tumm faryaad krogee\A Deewanaa hua mastaanaa hua\A Compliment diye huye zamaanaa hua,\APyaar hua hamko par batanaa hi thaa\AKhushiyaan aapke sang bitaana hi thaa\Aheeriya heeriye maan toh jaaa\Aheeriya heeriye jaan toh jaaa\Asajnaaa tumse hi milnaa ye hai tamannaa\Akismat kabhi nhi paayi hai paayi haii\Ahaaan na jeena marnaa thoda aur ruknaa\A aur chize banayii hai banayii hai\Aohh aake mood mein sunaya bharke yaad nuu\A dekha jo aandhi meinn tera gussa yaad kruu\Akya chiz se manungi sabse alag pechanungi, \Ahawa se uppar sochta hai tu pagal krke marungii! \Aokay okay! chalta hi jaavan koi nhi pehchavan\Apar yaad teri har pal aawaan mai... \Asamay kat jaavan dooriya aawan par tenu vaaste pyaar kadi na kat jaavan mai...\Asheeshhh Thank you thank you"; /* Replace with your actual text */
+    display: flex;
+    padding: 20px; /* Add padding for text */
+    font-size: 12px; /* Adjust font size if needed */
+    justify-content: center;
+    white-space: pre-line;
+    line-height: 1.5;
+    overflow: auto; /* Prevent overflow */
+}
+
+.sliding-box {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    color: #da9e51;
+    border-radius: 10px;
+    transition: transform 0.5s ease; /* Smooth sliding effect */
+    z-index: 100; /* Ensures it's above other elements */
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+    text-align: center; /* Center the text */
+    overflow: auto; /* Prevent overflow */
+    transform: translateX(100%); /* Start off-screen */
+}
+
+
+@media (max-width: 768px) {
+    /* For mobile: vertical rectangular box */
+    .sliding-box {
+        width: 80%; /* Relative to screen width */
+        height: 70%; /* Relative to screen height */
+        top: 14%; /* Center vertically */
+        transform: translateX(108%); /* Start off-screen (left) */
+        border-radius: 40px;
+    }
+}
+
+@media (min-width: 769px) {
+    /* For desktop: horizontal rectangular box */
+    .sliding-box {
+        width: 65%; /* Relative to screen width */
+        height: 75%; /* Relative to screen height */
+        top: 14%; /* Center vertically */
+        transform: translateX(125%); /* Start off-screen (left) */
+        border-radius: 40px;
+       
+    }
+}
+
+/* Class to show the box in the center */
+.show-box {
+    transform: translateX(0); /* Slide it to the center */
+}
+
+/* Left-side sliding box */
+.left-sliding-box {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    color: #da9e51;
+    border-radius: 10px;
+    transition: transform 0.5s ease; /* Smooth sliding effect */
+    z-index: 100; /* Ensures it's above other elements */
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-style: italic;
+    text-align: center; /* Center the text */
+    overflow: auto; /* Prevent overflow */
+    transform: translateX(-100%); /* Start off-screen on the left */
+}
+
+#user {
+    position: fixed;          /* Position it absolutely */
+    top: 90%;                  /* Distance from the top */
+    left: 10px;                 /* Distance from the left */
+    width: 63%; /* Full width minus padding */
+    padding: 10px;              /* Padding inside input */
+    border: 1px solid #ccc;     /* Add a border */
+    border-radius: 13px; 
+    z-index: 100;        /* Round the corners */
+    background-color: rgb(43, 37, 30);
+    color: #cab99f;
+   
+}
+
+#submitUser {
+    position: fixed;          /* Position it absolutely */
+    top: 90%;                  /* Below the username input */
+    left: 75%;                 /* Distance from the left */
+    width: 20%;   /* Full width minus padding */
+    padding: 10px;              /* Padding inside button */
+    background-color: #dab79a;  /* Green background */
+    color: #1f1f1fdc;               /* White text */
+    border: none;               /* Remove border */
+    border-radius: 13px;        /* Round the corners */
+    cursor: pointer; 
+    z-index: 100;           /* Pointer cursor on hover */
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#diary {
+    position: fixed;          /* Position it absolutely */
+    top: 90%;                 /* Below the submit button */
+    left: 10px;                 /* Distance from the left */
+    width: 63%;   /* Full width minus padding */
+    padding: 10px;              /* Padding inside input */
+    border: 1px solid #ccc;     /* Add a border */
+    border-radius: 13px;         /* Round the corners */
+    z-index: 100;
+    background-color: rgb(43, 37, 30);
+    color: #cab99f;
+}
+
+#submitDiary {
+    position: fixed;          /* Position it absolutely */
+    top: 90.5%;                 /* Below the diary input */
+    left: 75%;                 /* Distance from the left */
+    width: 20%;   /* Full width minus padding */
+    padding: 10px;              /* Padding inside button */
+    background-color: #dab79a;  /* Green background */
+    color: #1f1f1fdc;                /* White text */
+    border: none;               /* Remove border */
+    border-radius: 13px;        /* Round the corners */
+    cursor: pointer;            /* Pointer cursor on hover */
+    z-index: 100;
+    font-size: 12px;
+    font-weight: bold
+    
+}
+
+#diaryNotes {
+    position: absolute;          /* Position it absolutely */
+    top: 10%;                 /* Below the submit button */
+    left: 10px;                 /* Distance from the left */
+    width: calc(100% - 20px);   /* Full width minus padding */
+}
+.diary-notes {
+    width: 90%;
+    max-height: 78%;
+    overflow-y: auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column-reverse;
+    font-size: 10px;
+    color: #524136;
+    margin-top: 5px;
+    text-align: right;
+    
+}
+
+/* Style for each note entry */
+.diary-note {
+    width: 90%;
+    margin: 8px 0;
+    padding: 10px;
+    background-color: #8b7c71;
+    border-radius: 28px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    animation: sendAnimation 0.3s ease-out;
+    transition: transform 0.3s ease;
+    transform: translateY(-20px); /* Start above */
+      /* Ensure notes wrap and adjust height as needed */
+      white-space: pre-wrap;  /* Preserves whitespace and line breaks */
+      word-wrap: break-word;  /* Wrap long words */
+      height: auto;
+}
+
+.diary-note .note-content {
+    font-size: 14px;
+    color: #292119;
+    text-align: center;
+}
+
+/* Desktop styles for the left sliding box */
+@media (min-width: 769px) {
+    #user {
+        position: fixed;          /* Position it absolutely */
+        top: 92%;                  /* Distance from the top */
+        left: 40px;                 /* Distance from the left */
+        width: 63%; /* Full width minus padding */
+        padding: 10px;              /* Padding inside input */
+        border: 1px solid #ccc;     /* Add a border */
+        border-radius: 18px; 
+        z-index: 100;        /* Round the corners */
+        height: 30px;
+       
+    }
+    
+    #submitUser {
+        position: fixed;          /* Position it absolutely */
+        top: 92%;                 /* Below the diary input */
+        left: 70%;                 /* Distance from the left */
+        width: 20%;   /* Full width minus padding */
+        border: none;               /* Remove border */
+        border-radius: 18px;        /* Round the corners */
+        height: 50px;
+        cursor: pointer; 
+        z-index: 100;           /* Pointer cursor on hover */
+    }
+    
+    #diary {
+        position: fixed;          /* Position it absolutely */
+        top: 92%;                 /* Below the submit button */
+        left: 40px;                 /* Distance from the left */
+        width: 63%;   /* Full width minus padding */
+        padding: 10px;              /* Padding inside input */
+        border: 1px solid #ccc;     /* Add a border */
+        border-radius: 18px;         /* Round the corners */
+        z-index: 100;
+        height: 30px;
+    }
+    
+    #submitDiary {
+        position: fixed;          /* Position it absolutely */
+        top: 92%;                 /* Below the diary input */
+        left: 70%;                 /* Distance from the left */
+        width: 20%;   /* Full width minus padding */
+        padding: 10px;              /* Padding inside button */
+        border: none;               /* Remove border */
+        border-radius: 18px;        /* Round the corners */
+        cursor: pointer;            /* Pointer cursor on hover */
+        z-index: 100;
+        height: 50px;
+        font-size: 14px;
+    }
+    
+    #diaryNotes {
+        position: absolute;          /* Position it absolutely */
+        top: 10%;                 /* Below the submit button */
+        left: 10px;                 /* Distance from the left */
+        width: calc(100% - 20px);   /* Full width minus padding */
+    }
+    .diary-notes {
+        width: 90%;
+        max-height: 78%;
+        overflow-y: auto;
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column-reverse;
+        font-size: 14px;
+        color: #3b2b21;
+        margin-top: 5px;
+        text-align: right;
+    }
+    
+    /* Style for each note entry */
+    .diary-note {
+        width: 90%;
+        position: relative;
+        left: 3%;
+        margin: 8px 0;
+        padding: 10px;
+        background-color: #8b7c71;
+        border-radius: 30px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        animation: sendAnimation 0.3s ease-out;
+        transition: transform 0.3s ease;
+        transform: translateY(-20px); /* Start above */
+          /* Ensure notes wrap and adjust height as needed */
+          white-space: pre-wrap;  /* Preserves whitespace and line breaks */
+          word-wrap: break-word;  /* Wrap long words */
+          height: auto;
+    }
+    
+    .diary-note .note-content {
+        font-size: 18px;
+        color: #292119;
+        text-align: center;
+    }
+}
+
+
+/* Send animation for the note */
+@keyframes sendAnimation {
+    0% { transform: translateY(95px) scale(0.9); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+/* Mobile styles for the left sliding box */
+@media (max-width: 768px) {
+    .left-sliding-box {
+        width: 80%; /* Relative to screen width */
+        height: 70%; /* Relative to screen height */
+        top: 14%; /* Center vertically */
+        transform: translateX(-108%); /* Start off-screen on the left */
+        border-radius: 40px;
+    }
+}
+
+/* Desktop styles for the left sliding box */
+@media (min-width: 769px) {
+    .left-sliding-box {
+        width: 65%; /* Relative to screen width */
+        height: 75%; /* Relative to screen height */
+        top: 14%; /* Center vertically */
+        transform: translateX(-125%); /* Start off-screen on the left */
+        border-radius: 40px;
+    }
+}
+
+/* Class to show the left sliding box in the center */
+.show-left-box {
+    transform: translateX(0); /* Slide to the center */
+}
+
+
+
+/* Background for mobile devices */
+@media only screen and (max-width: 768px) {
+    body {
+        background-image: url('the1.jpeg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+/* Dynamic Island (Parent) */
+.dynamic-island {
+    position: fixed;
+    top: 20px;  /* Start at the top edge */
+    left: 48.5%; /* Center horizontally */
+    transform: translateX(-50%); /* This centers it horizontally */
+    width: 350px;
+    height: 60px;
+    background-color: #0000009d;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 2000;
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+    
+}
+
+/* Swipebox (Child) attached below the dynamic island */
+.swipebox {
+    position: fixed;
+    top: -1100%; /* Start above the visible area (hidden) */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Ensure it's centered horizontally */
+    width: 350px; /* Width of Swipebox */
+    height: 600px; /* Height of Swipebox */
+    background-color: #1a1511;
+    border-radius: 40px;
+    z-index: 999;
+    transition: transform 0.5s ease; /* Smooth transition for sliding */
+    user-select: none;  /* Makes button text unselectable */
+    
+}
+
+/* Class to show the Swipebox in the center */
+.show-swipebox {
+    transform: translateX(-50%) translateY(370px); /* Slide down vertically */
+}
+
+/* Class to hide the Swipebox back to the top edge */
+.hide-swipebox {
+    transform: translateX(-50%) translateY(-100%); /* Slide back up */
+}
+
+/* Class to apply text inside the Swipebox */
+.swipebox::before {
+    content: "What would I like to hear?? What are my likingss??\A There are several things Can you guess itt?";
+    display: flex;
+    padding: 20px;
+    font-size: 15px;
+    justify-content: center;
+    white-space: pre-line;
+    line-height: 1.5;
+    color: #d1b080;
+    font-style: italic;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .swipebox {
+        width: 170%;  /* Mobile-specific size (relative to screen) */
+        height: 960%; /* Mobile-specific height */
+        top: -1200%;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+    .swipebox {
+        width: 300%;  /* Desktop-specific width */
+        height: 1000%; /* Desktop-specific height */
+        top: -1200%;  /* Start off-screen */
+        border-radius: 90px;
+
+    }
+}
+
+/* For desktop screens (larger than 768px) */
+@media (min-width: 769px) {
+    .show-swipebox {
+        transform: translateX(-50%) translateY(450px); /* Adjust this value for desktop */
+    }
+}
+
+/* Desktop-specific styles (for screens larger than 768px) */
+@media (max-width: 768px) {
+    .dynamic-island {
+        position: fixed;
+        top: 10px;  /* Start at the top edge */
+        left: 48.5%; /* Center horizontally */
+        width: 200px;
+        height: 55px;
+        background-color: #0000009d;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-size: 14px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: transform 0.5s ease; /* Smooth transition for sliding */
+    }
+}
+
+/* Styles for mobile devices */
+@media (max-width: 768px) {
+    /* Input field styles for mobile */
+    #userGuess {
+        width: 80%; /* Full width of the swipebox */
+        height: 5%;
+        padding: 10px; /* Padding inside the input */
+        margin: 10px 0; /* Margin for spacing */
+        border: 2px solid #dab79a; /* Blue border */
+        border-radius: 15px; /* Rounded corners */
+        font-size: 14px; /* Adjust font size for mobile */
+        outline: none; /* Remove default outline */
+        transition: border-color 0.3s; /* Smooth border color change */
+        margin-left: 25px;
+        position: relative;
+        top: -30px;
+        background-color: rgb(43, 37, 30);
+
+    }
+
+    /* Submit button styles for mobile */
+    #submitGuess {
+        padding: 10px 20px; /* Padding inside the button */
+        height: 10%;
+        width: 35%;
+        background-color: #9b7a60; /* Blue background */
+        margin-top: 2%;
+        margin-left: 32%;
+        color: rgb(255, 209, 178); /* White text */
+        border: none; /* Remove border */
+        border-radius: 20px; /* Rounded corners */
+        font-size: 14px; /* Adjust font size for mobile */
+        cursor: pointer; /* Pointer cursor */
+        transition: background-color 0.3s; /* Smooth background color change */
+        position: relative;
+        top: -20px;
+    }
+
+    /* Result message styles */
+    #resultMessage {
+    margin-top: 40px; /* Space above the message */
+    font-size: 18px; /* Larger text for the message */
+    font-weight: bold; /* Make the message bold */
+    
+    text-align: center; /* Center the message */
+}
+}
+
+/* Styles for desktop devices */
+@media (min-width: 769px) {
+    /* Input field styles for desktop */
+    #userGuess {
+        right: 30%;
+        width: 40%; /* Wider input field on desktop */
+        padding: 15px; /* More padding */
+        margin: 10px 0; /* Margin for spacing */
+        border: 2px solid #dab79a; /* Blue border */
+        border-radius: 15px; /* Rounded corners */
+        font-size: 16px; /* Larger text for desktop */
+        outline: none; /* Remove default outline */
+        transition: border-color 0.3s; /* Smooth border color change */
+        margin-left: 18%;
+        margin-top: 2%;
+        background-color: rgb(43, 37, 30);
+        
+    }
+
+    /* Submit button styles for desktop */
+    #submitGuess {
+        padding: 15px 30px; /* More padding for desktop */
+        background-color: #9b7a60; /* Blue background */
+        font-weight: bold;
+        color: rgb(255, 209, 178); /* White text */
+        border: none; /* Remove border */
+        border-radius: 15px; /* Rounded corners */
+        font-size: 16px; /* Larger text for desktop */
+        cursor: pointer; /* Pointer cursor */
+        transition: background-color 0.3s; /* Smooth background color change */
+        margin-left: 10px;
+    }
+}
+
+/* Input focus effect */
+#userGuess:focus {
+    border-color: #d48d8d; /* Darker blue on focus */
+}
+
+/* Submit button hover effect */
+#submitGuess:hover {
+    background-color: #664e43; /* Darker blue on hover */
+}
+
+/* Result message styles */
+#resultMessage {
+    margin-top: 50px; /* Space above the message */
+    font-size: 18px; /* Larger text for the message */
+    font-weight: bold; /* Make the message bold */
+
+    text-align: center; /* Center the message */
+}
+
+/* Correct response message style */
+.correct-message {
+    color: rgb(255, 187, 98); /* Color for correct guesses */
+    position: relative;
+    top: -20px;
+}
+
+/* Wrong response message style */
+.wrong-message {
+    color: rgb(255, 191, 154); /* Color for wrong guesses */
+    position: relative;
+    top: -20px;
+}
+
+/* General styling for username input and submit button */
+#username{
+    width: 100%;
+    max-width: 300px;
+    padding: 12px;
+    margin: 8px 0;
+    font-size: 1rem;
+    border: 2px solid #dab79a;
+    border-radius: 5px;
+    outline: none;
+    background-color: rgb(43, 37, 30);
+}
+
+/* Input focus effect */
+#username:focus {
+    border-color: #eee08e; /* Darker blue on focus */
+}
+
+#submitUsername {
+    background-color: #9b7a60;
+    color: rgb(255, 209, 178);
+    cursor: pointer;
+    border: none;
+   
+}
+
+#submitUsername:hover {
+    background-color: #615140;
+}
+
+/* Desktop-specific styling */
+@media (min-width: 768px) {
+    #submitUsername {
+        max-width: 200px;
+        padding: 15px;
+        font-size: 1.1rem;
+        margin-left: 2%;
+        border-radius: 20px;
+        margin-top: 3%;
+        font-weight: bold;
+        position: relative;
+        top: 0%;
+    }
+}
+
+/* Mobile-specific styling */
+@media (max-width: 767px) {
+    #submitUsername {
+        max-width: 90%;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 18px;
+        margin-left: 65%;
+        font-size: 16px;
+        position: relative;
+        top: -9%;
+        
+    
+    }
+}
+
+/* Desktop-specific styling */
+@media (min-width: 768px) {
+    #username {
+        max-width: 200px;
+        padding: 15px;
+        font-size: 1.1rem;
+        margin: 10px 0;
+        margin-left: 25%;
+        border-radius: 20px;
+        
+    }
+}
+
+/* Mobile-specific styling */
+@media (max-width: 767px) {
+    #username {
+        max-width: 45%;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 15px;
+        margin-left: 7%;
+        margin-top: 10%;
+        position: relative;
+        top: 6.5px;
+    }
+
+    /* Target iOS devices for consistent styling */
+@supports (-webkit-touch-callout: none) {
+    #submitUsername {
+        max-width: 90%; /* Adjust for iOS display */
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 18px;
+        margin-left: 65%;
+        top: -9%;
+        position: relative;
+    }
+
+    #username {
+        max-width: 45%;
+        padding: 10px;
+        font-size: 1rem;
+        border-radius: 15px;
+        margin-left: 7%;
+        margin-top: 10%;
+        top: 6.5px;
+        position: relative;
+    }
+}
+    
+}
+
+.icon-tray {
+    position: fixed;
+    top: 92%;
+    width: 80%;
+    max-width: 400px;
+    height: 50px;
+    background: radial-gradient(circle rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(8px); /* Creates a frosted glass effect */
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.815);
+    padding: 0 10px;
+    
+}
+
+.icon img {
+    width: 30px;
+    height: 30px;
+    transition: transform 0.2s;
+}
+
+.icon img:hover {
+    transform: scale(1.1);
+}
+
+
+/* Modal */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6));
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: radial-gradient rgba(255, 255, 255, 0.178); /* Semi-transparent box */
+    width: 80%;
+    max-width: 400px;
+    height: 60%;
+    padding: 20px;
+    backdrop-filter: blur(50px);
+    border-radius: 50px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.411);
+    text-align: center;
+    animation: fadeIn 0.3s ease-out;
+    overflow: auto;
+}
+
+.modal-content p {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Content wrapper */
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+}
+
+/* Image list styling */
+.image-list .item {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 10px;
+}
+
+/* Square image styling */
+.image-list img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Text styling */
+.image-list p {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Desktop-specific styling */
+@media (min-width: 768px) {
+    .icon-tray {
+        position: fixed;
+        top: 92%;
+        width: 80%;
+        max-width: 1000px;
+        height: 80px;
+        background: radial-gradient(circle rgba(255, 255, 255, 0.096), rgba(0, 0, 0, 0.6));
+        backdrop-filter: blur(8px); /* Creates a frosted glass effect */
+        border-radius: 24px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.932);
+        padding: 0 10px;
+        
+    }
+    
+    .icon img {
+        width: 40px;
+        height: 40px;
+        transition: transform 0.2s;
+    }
+    
+    .icon img:hover {
+        transform: scale(1.4);
+    }
+    
+    
+    /* Modal */
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.6));
+        backdrop-filter: blur(20px);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .modal-content {
+        background: radial-gradient rgba(255, 255, 255, 0.178); /* Semi-transparent box */
+        width: 80%;
+        max-width: 1600px;
+        height: 60%;
+        padding: 20px;
+        backdrop-filter: blur(80px);
+        border-radius: 80px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.411);
+        text-align: center;
+        animation: fadeIn 0.3s ease-out;
+        overflow: auto;
+    }
+    
+    .modal-content p {
+        margin: 0;
+        font-size: 18px;
+    }
+    
+    /* Content wrapper */
+    .content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        
+    }
+    
+    /* Image list styling */
+    .image-list .item {
+        display: flex;
+        align-items: center;
+        gap: 30%;
+        padding: 20px;
+    }
+    
+    /* Square image styling */
+    .image-list img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 40px;
+    }
+    
+    /* Text styling */
+    .image-list p {
+        font-size: 16px;
+        margin: 0;
+    }
+
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
