@@ -22,6 +22,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const uploadButton = document.getElementById("uploadButton");
 
 // Function to toggle the notes overlay
 function toggleNote() {
@@ -33,12 +34,15 @@ function toggleNote() {
         notesDisplayOverlay.style.display = "block";
         notesDisplayOverlay.style.zIndex = "1";
         iconNoteContainer.style.zIndex = "2"; // Ensure icon-note remains above
+        uploadButton.style.display = "none"; // Hide the upload button
     } else {
         // Hide the overlay
         notesDisplayOverlay.style.display = "none";
+        uploadButton.style.display = "inline-block"; // Show the upload button again
     }
 }
 
+// Function to load uploaded notes into the overlay
 // Function to load uploaded notes into the overlay
 function loadUploadedNotes() {
     const notesRef = ref(database, "uploadedContent");
@@ -68,16 +72,24 @@ function loadUploadedNotes() {
     });
 }
 
-// Helper function to load a note into the center box
+
+/// Helper function to load a note into the center box and focus it
 function loadNoteIntoCenterBox(noteKey, noteContent) {
     const centerBox = document.querySelector(".center-box");
-    centerBox.innerHTML = noteContent; // Load the content into the center box
-    centerBox.setAttribute("data-note-key", noteKey); // Store the note's key for updates
-        // Hide the overlay
-        notesDisplayOverlay.style.display = "none";
+    const notesDisplayOverlay = document.getElementById("notesDisplayOverlay");
 
-        // Bring the center box into focus
-        centerBox.focus();
+    // Load the content into the center box
+    centerBox.innerHTML = noteContent; 
+    centerBox.setAttribute("data-note-key", noteKey); // Store the note's key for updates
+    
+    // Hide the overlay
+    notesDisplayOverlay.style.display = "none";
+    
+    // Make the upload button visible again
+    uploadButton.style.display = "inline-block";
+
+    // Bring the center box into focus
+    centerBox.focus();
 }
 
 // Function to upload or update the content
