@@ -1165,6 +1165,7 @@ body {
 
 
 
+
 .action-icon {
     position: absolute;
     top: 15px;
@@ -1238,7 +1239,6 @@ body {
     flex-direction: column-reverse;
     gap: 10px;
     max-height: 100%;
-    overflow-y: auto;
     margin: 10px 0;
 }
 
@@ -1269,3 +1269,4 @@ body {
     font-weight: bold;
     
 }
+
