@@ -824,7 +824,8 @@ body {
         margin-left: 65%;
         font-size: 16px;
         position: relative;
-        top: -9%;
+        top: calc(27.6vh - 250px); /* Center vertically based on viewport height */
+        left: calc(40vw - 150px); /* Center horizontally based on viewport width */
         
     
     }
@@ -1165,7 +1166,6 @@ body {
 
 
 
-
 .action-icon {
     position: absolute;
     top: 15px;
@@ -1269,4 +1269,3 @@ body {
     font-weight: bold;
     
 }
-
