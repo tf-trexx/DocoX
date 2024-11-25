@@ -787,6 +787,14 @@ body {
     border-color: #eee08e; /* Darker blue on focus */
 }
 
+#submitUsername {
+    background-color: #9b7a60;
+    color: rgb(255, 209, 178);
+    cursor: pointer;
+    border: none;
+   
+}
+
 #submitUsername:hover {
     background-color: #615140;
 }
@@ -809,21 +817,15 @@ body {
 /* Mobile-specific styling */
 @media (max-width: 767px) {
     #submitUsername {
-        padding: 10px 20px; /* Padding inside the button */
-        height: 9%;
-        width: 30%;
-        background-color: #9b7a60; /* Blue background */
-        margin-top: 2%;
-        margin-left: 32%;
-        color: rgb(255, 209, 178); /* White text */
-        border: none; /* Remove border */
-        border-radius: 18px; /* Rounded corners */
-        font-size: 14px; /* Adjust font size for mobile */
-        cursor: pointer; /* Pointer cursor */
-        transition: background-color 0.3s; /* Smooth background color change */
+        max-width: 90%;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 18px;
+        margin-left: 65%;
+        font-size: 16px;
         position: relative;
-        top: -55px;
-        left: 30%;
+        top: calc(27.6vh - 250px); /* Center vertically based on viewport height */
+        left: calc(40vw - 150px); /* Center horizontally based on viewport width */
         
     
     }
