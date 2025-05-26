@@ -271,6 +271,19 @@ body {
     transform: translateX(-100%); /* Start off-screen on the left */
 }
 
+#googleSignInBtn {
+    position: fixed;          /* Position it absolutely */
+    top: 90%;                  /* Distance from the top */
+    left: 56px;                 /* Distance from the left */
+    width: 63%; /* Full width minus padding */
+    padding: 10px;              /* Padding inside input */
+    border: 1px solid #ccc;     /* Add a border */
+    border-radius: 13px; 
+    z-index: 100;        /* Round the corners */
+    background-color: rgb(43, 37, 30);
+    color: #cab99f;
+}
+
 #user {
     position: fixed;          /* Position it absolutely */
     top: 90%;                  /* Distance from the top */
